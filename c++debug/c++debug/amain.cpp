@@ -1,18 +1,36 @@
-#include<iostream>
-using namespace std;
-#include "mao.h"
+#include <iostream>
 
-int main()
+class Person
 {
-	int arr1[10] = { 34,24,90,567,13,45,89,78,34,78 };
-	double arr2[10] = { 34.0,243,24.7,24.8,45.8,24.90,89.4,13,35.5,23.8 };
-	orderarray(arr1, 10);
-	orderarray(arr2, 10);
-	cout << "hello world" << endl;
-	cout << "2commit" << endl;
-	/*int a[] = { 1,4,6,7,8,9,10,12,3,15,6 };
-	for (int i = 0; i < 11; i++)
-		cout << a[i] << " ";*/
+public:
+	virtual void BuyTicket(int)
+	{
+		std::cout << "Adult need Full Fare!" << std::endl;
+	}
+};
+
+class Child : public Person
+{
+public:
+	virtual void BuyTicket(int)
+	{
+		std::cout << "Child Free!" << std::endl;
+	}
+};
+
+void fun(Person& obj)
+{
+	obj.BuyTicket(1);
+}
+
+int main(void)
+{
+	Person p;
+	Child c;
+
+	fun(p);
+	fun(c);
 	system("pause");
 	return 0;
 }
+
